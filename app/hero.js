@@ -1,4 +1,4 @@
-import "./homepage.css";
+import "./global.css";
 
 const Hero = ({ title, subtitle, imageUrl }) => {
   return (
