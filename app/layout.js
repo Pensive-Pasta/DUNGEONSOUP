@@ -1,12 +1,17 @@
 export const metadata = {
-  title: 'DUNGEONSOUP',
-  description: '',
-}
+  title: "DUNGEONSOUP",
+  description: "",
+};
+
+import Navbar from "@/app/components/navbar";
 
 export default function RootLayout({ children }) {
- return (
+  return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
