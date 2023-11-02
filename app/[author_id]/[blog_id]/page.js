@@ -1,10 +1,10 @@
-import ArticleHero from "../components/article/article-hero";
-import ArticleDetails from "../components/article/details";
+import ArticleHero from "../../components/article/article-hero";
+import ArticleDetails from "../../components/article/details";
 import Link from "next/link";
 
-const SingleArticle = ({ blog_id, id}) => {
+const SingleArticle = ({ params: { blog_id, author_id } }) => {
   // fetch blog content by calling api with blog_id destructured from the params
-  // fetch author by id destructured from params
+  // fetch author by author_id destructured from params
   const article = {
     id: "1",
     title: "The Art of Negotiation",
@@ -19,12 +19,12 @@ const SingleArticle = ({ blog_id, id}) => {
     in_article_image: "",
   };
   const author = {
-    id: '1',
-    name: 'Ricky', 
-    about: 'About about about',
-    banner_image: '',
-    profile_image: ''
-  }
+    id: "1",
+    name: "Ricky",
+    about: "About about about",
+    banner_image: "",
+    profile_image: "",
+  };
   const {
     title,
     subtitle,

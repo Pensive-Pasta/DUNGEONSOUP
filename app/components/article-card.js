@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const ArticleCard = ({ title, subtitle, imageUrl, href }) => {
+const ArticleCard = ({ title, subtitle = "", imageUrl, href }) => {
   return (
     <div className="article-card">
       <Link href={href}>
