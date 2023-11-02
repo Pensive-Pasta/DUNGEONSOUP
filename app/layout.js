@@ -4,6 +4,7 @@ export const metadata = {
 };
 
 import Navbar from "@/app/components/navbar";
+import Footer from "./components/footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
