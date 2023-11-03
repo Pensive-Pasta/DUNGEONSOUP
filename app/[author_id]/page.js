@@ -1,36 +1,43 @@
-import About from "../components/about";
+"use client";
+
+import { useState, useEffect } from "react";
+import About from "@/app/components/about";
 import ArticleCard from "../components/article-card";
 import AuthorHero from "../components/author/author-hero";
 
-const author = ({ params: { author_id } }) => {
-  // fetch author by author_id in params
-  // fetch articles by author_id
-  const author = {
-    id: 1,
-    name: "Clam Chowder",
-    about: "About about about",
-    banner_image: "",
-    profile_image: "",
-  };
-  const articles = [
-    {
-      title: "The Art of Negotiation: Convincing That Troll to Let You Pass",
-      content: "Learn the secrets of negotiating with mythical creatures!",
-      imageUrl: "/path/to/image1.jpg",
-      href: "/",
-    },
-  ];
+const Author = ({ params: { author_id } }) => {
+  const [author, setAuthor] = useState(null);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/author/${author_id}`)
+      .then((response) => response.text())
+      .then((data) => setAuthor(JSON.parse(data)))
+      .catch((error) => console.error("Error fetching author data:", error));
+
+    fetch(`http://localhost:3001/articles/author/${author_id}`)
+      .then((response) => response.text())
+      .then((data) => setArticles(JSON.parse(data)))
+      .catch((error) => console.error("Error fetching articles data:", error));
+  }, [author_id]);
+
+  if (!author) return null;
 
   return (
     <div>
       <AuthorHero img={author.banner_image} name={author.name} />
       <h2>Articles</h2>
-      {articles.map(({ title, imageUrl, href }) => (
-        <ArticleCard title={title} imageUrl={imageUrl} href={href} />
+      {articles.map(({ title, thumbnail_image_url, article_id }) => (
+        <ArticleCard
+          key={article_id}
+          title={title}
+          imageUrl={thumbnail_image_url}
+          href={`/article/${article_id}`}
+        />
       ))}
       <About description={author.about} imageUrl={author.profile_image} />
     </div>
   );
 };
 
-export default author;
+export default Author;
