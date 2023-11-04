@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&family=Roboto:wght@100;400;700&display=swap');
+
+body {
+    margin: 0;
+}
+
 .hero {
+    background-color: #2EC4B6;
     background-size: cover;
     background-position: center;
     height: 600px;
@@ -17,18 +24,23 @@
 }
 
 h1 {
-    font-size: 80px;
+    color: #F4FEFC;
+    font-family: caveat;
+    font-size: 13vw;
     font-weight: 700;
     margin: 0;
     @media (max-width: 650px) {
-        font-size: 44px;
+        /* font-size: 44px; */
     }
 }
 
-h3 {
-    font-size: 44px;
+h2 {
+    color: #F4FEFC;
+    font-family: roboto;
+    font-weight: 100;
+    font-size: 3vw;
     margin: 0;
     @media (max-width: 650px) {
-        font-size: 22px;
+        /* font-size: 22px; */
     }
 }

@@ -1,16 +1,13 @@
 import "./global.css";
 
-const Hero = ({ title, subtitle, imageUrl }) => {
+const Hero = ({ title, subtitle}) => {
   return (
     <section
       className="hero"
-      style={{
-        backgroundImage: `url(${imageUrl})`,
-      }}
     >
       <div className="content">
         <h1>{title}</h1>
-        {subtitle && <h3>{subtitle}</h3>}
+        {subtitle && <h2>{subtitle}</h2>}
       </div>
     </section>
   );
