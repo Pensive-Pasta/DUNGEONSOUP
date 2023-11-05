@@ -27,7 +27,6 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
   const {
     title,
     subtitle,
-    read_time,
     likes,
     content,
     thumbnail_image,
@@ -39,14 +38,13 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
     <div>
       <ArticleHero img={banner_image} title={title} subtitle={subtitle} />
       <ArticleDetails
-        authorId={author.id}
         authorName={author.name}
-        readTime={read_time}
         likes={likes}
-        blogId={article_id}
+        articleId={article_id}
+        content={content}
       />
       <ArticleAbout content={article.content} />
-      <Link href={`/author/${author.id}`}>More from {author.name}</Link>
+      <Link href={`/author/${author_id}`}>More from {author.name}</Link>
     </div>
   );
 };
