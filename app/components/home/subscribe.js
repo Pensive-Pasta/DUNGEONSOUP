@@ -1,6 +1,6 @@
 const Subscribe = () => {
   return (
-    <div className="subscribe-container">
+    <div className="subscribe-container" id="subscribe">
       <h2>SUBSCRIBE</h2>
       <p>Sign-up to survive your next dungeon crawl.</p>
       <div className="input-group">

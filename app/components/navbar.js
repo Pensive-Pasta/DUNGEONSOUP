@@ -7,6 +7,25 @@ import "./styles.css";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+    if (searchTerm.length > 2) {
+      fetch(`http://localhost:3001/articles/search/${searchTerm}`)
+        .then((response) => response.text())
+        .then((data) => setSearchResults(JSON.parse(data)))
+        .catch((error) => console.error("Error fetching author data:", error));
+    }
+  };
+
+  const resetSearch = () => {
+    setSearchResults([]);
+    setSearchTerm("");
+    setShowSearch(false);
+  };
 
   return (
     <nav>
@@ -28,20 +47,39 @@ const Navbar = () => {
             />
           </button>
           {showSearch && (
-            <input
-              type="text"
-              placeholder="Search authors..."
-              className="searchBar"
-            />
+            <>
+              <input
+                type="text"
+                placeholder="Search by title..."
+                className="searchBar"
+                onChange={handleSearch}
+              />
+              {searchTerm.length > 2 && (
+                <div className="overlay">
+                  {searchResults.length > 0 ? (
+                    searchResults.map((article) => (
+                      <Link
+                        href={`/${article.author_id}/${article.article_id}`}
+                        onClick={resetSearch}
+                      >
+                        {article.title}
+                      </Link>
+                    ))
+                  ) : (
+                    <p>No results found</p>
+                  )}
+                </div>
+              )}
+            </>
           )}
         </div>
 
         <div>
-          <Link className="link" href="/#about">
-            About
-          </Link>
           <Link className="link" href="/#articles">
             Articles
+          </Link>
+          <Link className="link" href="/#about">
+            About
           </Link>
           <Link className="link" href="/#subscribe">
             Subscribe

@@ -11,7 +11,7 @@ const LatestArticles = () => {
   ];
 
   return (
-    <div>
+    <div id="articles">
       <h2>LATEST ARTICLES</h2>
       <div className="articles-list">
         {articles.map((article, index) => (
