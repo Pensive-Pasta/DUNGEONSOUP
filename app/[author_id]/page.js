@@ -29,13 +29,8 @@ const Author = ({ params: { author_id } }) => {
     <div>
       <AuthorHero img={author.banner_image} name={author.name} />
       <h2>Articles</h2>
-      {articles.map(({ title, thumbnail_image_url, article_id }) => (
-        <ArticleCard
-          key={article_id}
-          title={title}
-          imageUrl={thumbnail_image_url}
-          href={`/article/${article_id}`}
-        />
+      {articles.map((article) => (
+        <ArticleCard {...article} />
       ))}
       <About description={author.about} imageUrl={author.profile_image} />
     </div>
