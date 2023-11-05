@@ -44,7 +44,7 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
         content={content}
       />
       <ArticleAbout content={article.content} />
-      <Link href={`/author/${author_id}`}>More from {author.name}</Link>
+      <Link href={`/${author_id}`}>More from {author.name}</Link>
     </div>
   );
 };
