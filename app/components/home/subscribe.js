@@ -8,7 +8,7 @@ const Subscribe = () => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     const validEmail = emailRegex.test(email);
     if (validEmail) {
       setComplete(true);

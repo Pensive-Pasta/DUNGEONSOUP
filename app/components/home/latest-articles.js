@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import ArticleCard from "../article-card";
+import Loading from "../loading";
 
 const LatestArticles = () => {
   const [loading, setLoading] = useState(true);
@@ -22,11 +23,11 @@ const LatestArticles = () => {
     <div id="articles">
       <h2>LATEST ARTICLES</h2>
       {loading ? (
-        <p>Loading</p>
+        <Loading />
       ) : (
         <div className="articles-list">
-          {articles.slice(0, articlePagination).map((article, index) => (
-            <ArticleCard key={index} {...article} />
+          {articles.slice(0, articlePagination).map((article) => (
+            <ArticleCard key={article.article_id} {...article} />
           ))}
           {articles.length > articlePagination && (
             <button onClick={() => setArticlePagination(articlePagination + 6)}>

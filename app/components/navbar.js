@@ -61,6 +61,7 @@ const Navbar = () => {
                       <Link
                         href={`/${article.author_id}/${article.article_id}`}
                         onClick={resetSearch}
+                        key={article.article_id}
                       >
                         {article.title}
                       </Link>

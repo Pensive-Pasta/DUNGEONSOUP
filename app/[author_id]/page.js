@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import About from "@/app/components/about";
 import ArticleCard from "../components/article-card";
 import AuthorHero from "../components/author/author-hero";
+import Loading from "../components/loading";
 
 const Author = ({ params: { author_id } }) => {
   const [author, setAuthor] = useState(null);
@@ -22,17 +23,22 @@ const Author = ({ params: { author_id } }) => {
     setLoading(false);
   }, [author_id]);
 
-  if (loading) return <p>Loading</p>;
-  if (!author) return <p>Author not found</p>;
-
   return (
     <div>
-      <AuthorHero img={author.banner_image} name={author.name} />
-      <h2>Articles</h2>
-      {articles.map((article) => (
-        <ArticleCard {...article} />
-      ))}
-      <About description={author.about} imageUrl={author.profile_image} />
+      {loading ? (
+        <Loading />
+      ) : !author ? (
+        <p>Author not found</p>
+      ) : (
+        <>
+          <AuthorHero img={author.banner_image} name={author.name} />
+          <h2>Articles</h2>
+          {articles.map((article) => (
+            <ArticleCard {...article} key={article.article_id} />
+          ))}
+          <About description={author.about} imageUrl={author.profile_image} />
+        </>
+      )}
     </div>
   );
 };
