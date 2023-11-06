@@ -2,37 +2,39 @@
 
 nav {
     display: flex;
-    justify-content: flex-end;
     font-family: roboto;
     font-size: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    margin: 0;
     position: fixed;
     width: 100%;
+    background-color: #05242E;
+}
+
+.logo {
+    margin-left: 88px;
 }
 
 .outerSearchContainer{
-    margin-right: 150px;
+    margin-right: 88px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .searchContainer{
-   display: flex;  
-   align-items: center;   
-   border: 1px solid #e6e6e6;
+   border: none;
    border-radius: 40px;
-   margin: 0 16px;
+   margin: 0;
 }
 
 .searchButton {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    padding: 6px 8px;
+    padding-top: 10px;
     :hover {
         transform: scale(1.1);
         transition: transform ease-in-out 0.3s;
@@ -40,20 +42,51 @@ nav {
 }
 
 .searchBar {
+    text-decoration: none;
     border: none;
     margin-right: 8px;
-    padding: 8px 0;
+    padding: 8px 10px;
+    background-color: #F7F9EF;
+}
+
+.searchBar:focus {
+    outline: none;
 }
 
 .link {
-    color: black;
+    color: #F7F9EF;
     text-decoration: none;
     font-size: 18px;
     font-weight: 400;
-    margin-right: 8px;
+    margin-left: 8px;
 }   
 
+.linksub {
+    color: black;
+    text-decoration:solid;
+    background-color: #C4CB48;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 8px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: 0.1s;
+}   
+
+.linksub:active {
+    color: #C4CB48;
+    background-color: #05242E;
+    border: 1px solid #C4CB48;
+}
+
+
 .overlay {
+    font-size: 12px;
+    width: 159px;
     position: absolute;
-    top: 20;
+    background-color: #F7F9EF;
+    margin-left: 30px;
+
 }
