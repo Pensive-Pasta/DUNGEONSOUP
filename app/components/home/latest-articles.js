@@ -21,7 +21,7 @@ const LatestArticles = () => {
 
   return (
     <div id="articles">
-      <h2>LATEST ARTICLES</h2>
+      <h3>LATEST ARTICLES</h3>
       {loading ? (
         <Loading />
       ) : (

@@ -5,7 +5,7 @@ const About = ({ description, imageUrl }) => {
     <section className="about-container" id="about">
       <Image src={imageUrl} alt="About Image" width={500} height={500} />
       <div className="about-content">
-        <h2>ABOUT</h2>
+        <h3>ABOUT</h3>
         <p>{description}</p>
       </div>
     </section>

@@ -16,7 +16,7 @@ const ArticleCard = ({
         </div>
 
         <div className="article-content">
-          <h3>{title}</h3>
+          <h4>{title}</h4>
           <p>{subtitle}</p>
         </div>
       </Link>

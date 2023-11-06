@@ -9,7 +9,7 @@ body {
     background-color: #05242E;
     background-size: cover;
     background-position: center;
-    height: 600px;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -30,6 +30,7 @@ h1 {
     font-size: 13vw;
     font-weight: 700;
     margin: 0;
+    padding-top: 100px;
     @media (max-width: 650px) {
         /* font-size: 44px; */
     }
@@ -44,4 +45,37 @@ h2 {
     @media (max-width: 650px) {
         /* font-size: 22px; */
     }
+}
+
+h3 {
+    color: #05242E;
+    font-family: caveat;
+    font-size: 48px;
+}
+
+footer {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F7F9EF;
+    background-color: #05242E;
+    height: 60px;
+    font-family: roboto;
+    font-weight: 100;
+    text-decoration: none;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #F7F9EF;
+}
+
+.subContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

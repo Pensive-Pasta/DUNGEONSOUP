@@ -5,6 +5,7 @@ export const metadata = {
 
 import Navbar from "@/app/components/navbar";
 import Footer from "./components/footer";
+import "./global.css";
 
 export default function RootLayout({ children }) {
   return (
