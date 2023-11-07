@@ -16,6 +16,10 @@ nav {
 
 .logo {
     margin-left: 88px;
+
+    @media (max-width: 750px) {
+        margin-left: 16px;
+     }
 }
 
 .outerSearchContainer{
@@ -23,19 +27,23 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 750px) {
+        margin-right: 16px;
+     }
 }
 
 .searchContainer{
    border: none;
    border-radius: 40px;
    margin: 0;
+   display: flex;
 }
 
 .searchButton {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    padding-top: 10px;
+    padding-top: 8px;
     :hover {
         transform: scale(1.1);
         transition: transform ease-in-out 0.3s;
@@ -45,9 +53,22 @@ nav {
 .searchBar {
     text-decoration: none;
     border: none;
-    margin-right: 8px;
-    padding: 8px 10px;
-    background-color: #F7F9EF;
+    margin: 0 8px;
+    padding: 8px;
+    font-family: Roboto;
+    font-weight: 100;
+    color: #05242E;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    background-color: #EEF1D2;
+    box-shadow: inset 4px 4px 4px #D2D5B9;
+
+    @media (max-width: 750px) {
+        position: absolute;
+        right: 8px;
+        width: 216px;
+     }
 }
 
 .searchBar:focus {
@@ -87,9 +108,31 @@ nav {
 
 .overlay {
     font-size: 12px;
-    width: 159px;
+    width: 140px;
     position: absolute;
     background-color: #F7F9EF;
-    margin-left: 30px;
+    margin-left: 38px;
+    margin-top: 32px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
 
+    @media (max-width: 750px) {
+        width: 200px;
+     }
+}
+
+.search-result {
+    all: unset;
+    color: #05242E;
+    padding: 16px 0;
+    border-bottom: 1px solid #003327;
+}
+
+.search-result:last-child {
+    border-bottom: none;
+}
+
+.search-result:hover {
+    color: #C4CB48;
 }

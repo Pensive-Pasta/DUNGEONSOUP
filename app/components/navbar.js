@@ -30,8 +30,13 @@ const Navbar = () => {
   return (
     <nav>
       <Link href="/">
-          
-        <Image className="logo" src="/images/dxs.svg" alt="Site Logo" width={50} height={50} />
+        <Image
+          className="logo"
+          src="/images/dxs.svg"
+          alt="Site Logo"
+          width={50}
+          height={50}
+        />
       </Link>
 
       <div className="outerSearchContainer">
@@ -59,7 +64,8 @@ const Navbar = () => {
                 <div className="overlay">
                   {searchResults.length > 0 ? (
                     searchResults.map((article) => (
-                      <Link className="results"
+                      <Link
+                        className="search-result"
                         href={`/${article.author_id}/${article.article_id}`}
                         onClick={resetSearch}
                         key={article.article_id}
@@ -83,7 +89,7 @@ const Navbar = () => {
           <Link className="link" href="/#about">
             About
           </Link>
-          <Link className="linksub"  href="/#subscribe">
+          <Link className="linksub" href="/#subscribe">
             Subscribe
           </Link>
         </div>
