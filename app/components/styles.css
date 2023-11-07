@@ -11,6 +11,7 @@ nav {
     position: fixed;
     width: 100%;
     background-color: #05242E;
+    z-index: 1;
 }
 
 .logo {
@@ -62,20 +63,22 @@ nav {
 }   
 
 .linksub {
-    color: black;
     text-decoration:solid;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-left: 8px;
+    box-sizing: border-box;
+    transition: 0.1s ease-in-out;
+    color: #003327;
     background-color: #C4CB48;
-    padding: 5px;
+    padding: 4px 16px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 400;
-    margin-left: 8px;
-    box-sizing: border-box;
-    border: 1px solid transparent;
-    transition: 0.1s;
+    border: 1px solid #003327;
 }   
 
-.linksub:active {
+.linksub:hover {
     color: #C4CB48;
     background-color: #05242E;
     border: 1px solid #C4CB48;

@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import ArticleHero from "../../components/article/article-hero";
 import ArticleDetails from "../../components/article/article-details";
 import Link from "next/link";
-import About from "@/app/components/about";
 import Loading from "@/app/components/loading";
+import "../../components/article/styles.css";
+import Image from "next/image";
 
 const SingleArticle = ({ params: { article_id, author_id } }) => {
   const [article, setArticle] = useState(null);
@@ -27,13 +28,7 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
 
   if (!article || !author) return null;
 
-  const {
-    title,
-    subtitle,
-    likes,
-    content,
-    image_url
-  } = article;
+  const { title, subtitle, likes, content, image_url } = article;
 
   return (
     <div>
@@ -48,8 +43,20 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
             articleId={article_id}
             content={content}
           />
-          <About description={content} imageUrl={image_url} />
-          <Link href={`/${author_id}`}>More from {author.name}</Link>
+          <p className="article-content">{content}</p>
+          <Link href={`/${author_id}`} className="author-link">
+            More from {author.name}
+          </Link>
+          <div className="article-image-container">
+            <Image
+              src={image_url}
+              alt="Article image"
+              width={500}
+              height={500}
+              layout="responsive"
+              className="article-image"
+            />
+          </div>
         </>
       )}
     </div>

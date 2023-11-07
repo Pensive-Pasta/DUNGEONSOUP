@@ -1,7 +1,8 @@
+import "../author/styles.css";
+
 const AuthorHero = ({ name }) => (
-  // set background image to img
-  <div>
-    <h1>{name}</h1>
+  <div className="author-hero">
+    <h1 className="author-name">{name}</h1>
   </div>
 );
 

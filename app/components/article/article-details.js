@@ -27,11 +27,12 @@ const ArticleDetails = ({ likes, authorName, content, articleId }) => {
   };
 
   return (
-    <div>
+    <div className="article-details">
       <p>
-        Published by {authorName} | {calculateReadTime(content)} min read |
+        Published by {authorName} | {calculateReadTime(content)} min read |{" "}
+        {likeCount}
         {/* change heart fill based on liked/not liked status  */}
-        <svg /> {likeCount}
+        {/* <svg />  */}
       </p>
       <button onClick={handleLike}>{pageIsLiked ? "DISLIKE" : "LIKE"}</button>
     </div>

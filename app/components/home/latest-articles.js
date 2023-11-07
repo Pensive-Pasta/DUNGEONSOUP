@@ -19,8 +19,6 @@ const LatestArticles = () => {
       .catch((error) => console.error("Error fetching author data:", error));
   }, []);
 
-  console.log({ articles });
-
   return (
     <div id="articles">
       <h3>LATEST ARTICLES</h3>

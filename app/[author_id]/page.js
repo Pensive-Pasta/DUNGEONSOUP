@@ -32,11 +32,21 @@ const Author = ({ params: { author_id } }) => {
       ) : (
         <>
           <AuthorHero img={author.banner_image} name={author.name} />
-          <h2>Articles</h2>
-          {articles.map((article) => (
-            <ArticleCard {...article} key={article.article_id} />
-          ))}
-          <About description={author.about} imageUrl={author.profile_image} />
+          <div className="author-articles-container">
+            {articles.map((article) => (
+              <ArticleCard
+                {...article}
+                authorName={author.name}
+                key={article.article_id}
+              />
+            ))}
+          </div>
+          {console.log(author)}
+          <About
+            description={author.about}
+            imageUrl={author.profile_image_url}
+            title={`ABOUT ${author.name.toUpperCase()}`}
+          />
         </>
       )}
     </div>
