@@ -16,7 +16,7 @@ const Home = () => {
              Faucibus egestas risus viverra eget id nunc. Vestibulum augue velit adipiscing tellus justo tortor. 
              Scelerisque vitae at eget aliquet neque nulla sit. In feugiat sed purus nunc condimentum lectus curabitur sed odio.
              "
-        imageUrl="/images/aboutimg.png"
+        imageUrl="/images/mainabout.png"
       />
       <Subscribe />
     </div>

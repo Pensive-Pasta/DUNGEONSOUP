@@ -18,8 +18,8 @@ const Subscribe = () => {
 
   return (
     <div className="subscribe-container" id="subscribe">
-      <h2>SUBSCRIBE</h2>
-      <p>Sign-up to survive your next dungeon crawl.</p>
+      <h3>SUBSCRIBE</h3>
+      <p>Subscribe to get the latest tips and tricks of the industry sent straight to your crypt box every month</p>
       <div className="input-group">
         <input
           type="email"
@@ -32,7 +32,7 @@ const Subscribe = () => {
           value={email}
         />
         <button type="submit" disabled={!email} onClick={handleSubmit}>
-          SUBMIT
+        Subscribe Now
         </button>
         {error && <p>Invalid email</p>}
         {complete && (

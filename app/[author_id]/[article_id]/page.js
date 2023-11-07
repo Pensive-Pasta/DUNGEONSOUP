@@ -32,9 +32,7 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
     subtitle,
     likes,
     content,
-    thumbnail_image,
-    banner_image,
-    in_article_image,
+    image_url
   } = article;
 
   return (
@@ -43,14 +41,14 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
         <Loading />
       ) : (
         <>
-          <ArticleHero img={banner_image} title={title} subtitle={subtitle} />
+          <ArticleHero title={title} subtitle={subtitle} />
           <ArticleDetails
             authorName={author.name}
             likes={likes}
             articleId={article_id}
             content={content}
           />
-          <About description={content} imageUrl="/images/aboutimg.png" />
+          <About description={content} imageUrl={image_url} />
           <Link href={`/${author_id}`}>More from {author.name}</Link>
         </>
       )}
