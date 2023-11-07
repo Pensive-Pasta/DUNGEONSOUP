@@ -4,7 +4,7 @@ import Link from "next/link";
 const ArticleCard = ({
   title,
   subtitle = "",
-  imageUrl,
+  image_url,
   article_id,
   author_id,
 }) => {
@@ -12,7 +12,7 @@ const ArticleCard = ({
     <div className="article-card">
       <Link href={`/${author_id}/${article_id}`}>
         <div className="article-image">
-          <Image src={imageUrl} alt={title} width={300} height={200} />
+          <Image src={image_url} alt={title} width={300} height={300} />
         </div>
 
         <div className="article-content">
