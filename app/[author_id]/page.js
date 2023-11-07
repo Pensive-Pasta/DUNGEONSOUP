@@ -5,6 +5,7 @@ import About from "@/app/components/about";
 import ArticleCard from "../components/article-card";
 import AuthorHero from "../components/author/author-hero";
 import Loading from "../components/loading";
+import Error from "../components/error";
 
 const Author = ({ params: { author_id } }) => {
   const [author, setAuthor] = useState(null);
@@ -28,7 +29,7 @@ const Author = ({ params: { author_id } }) => {
       {loading ? (
         <Loading />
       ) : !author ? (
-        <p>Author not found</p>
+        <Error title="Oops!" subtitle="That author doesn't exist!" />
       ) : (
         <>
           <AuthorHero img={author.banner_image} name={author.name} />

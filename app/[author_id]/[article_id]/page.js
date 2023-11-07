@@ -7,6 +7,7 @@ import Link from "next/link";
 import Loading from "@/app/components/loading";
 import "../../components/article/styles.css";
 import Image from "next/image";
+import Error from "@/app/components/error";
 
 const SingleArticle = ({ params: { article_id, author_id } }) => {
   const [article, setArticle] = useState(null);
@@ -34,6 +35,8 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
     <div>
       {loading ? (
         <Loading />
+      ) : !article ? (
+        <Error title="Oops!" subtitle="That article doesn't exist" />
       ) : (
         <>
           <ArticleHero title={title} subtitle={subtitle} />
