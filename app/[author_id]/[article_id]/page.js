@@ -27,7 +27,8 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
     setLoading(false);
   }, [article_id, author_id]);
 
-  if (!article || !author) return null;
+  if (!article || !author)
+    return <Error title="Oops!" subtitle="That article doesn't exist" />;
 
   const { title, subtitle, likes, content, image_url } = article;
 
@@ -35,8 +36,6 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
     <div>
       {loading ? (
         <Loading />
-      ) : !article ? (
-        <Error title="Oops!" subtitle="That article doesn't exist" />
       ) : (
         <>
           <ArticleHero title={title} subtitle={subtitle} />
