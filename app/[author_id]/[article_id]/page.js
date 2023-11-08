@@ -20,47 +20,43 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
       .then((data) => setArticle(JSON.parse(data)[0]))
       .catch((error) => console.error("Error fetching article data:", error));
 
-    fetch(`https://dungeonsoup-backend.onrender.com//author/${author_id}`)
+    fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
       .then((response) => response.text())
       .then((data) => setAuthor(JSON.parse(data)))
       .catch((error) => console.error("Error fetching author data:", error));
     setLoading(false);
   }, [article_id, author_id]);
 
-  if (!article || !author)
+  if (loading) return <Loading />;
+
+  if (!article)
     return <Error title="Oops!" subtitle="That article doesn't exist" />;
 
   const { title, subtitle, likes, content, image_url } = article;
 
   return (
     <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <ArticleHero title={title} subtitle={subtitle} />
-          <ArticleDetails
-            authorName={author.name}
-            likes={likes}
-            articleId={article_id}
-            content={content}
-          />
-          <p className="article-content">{content}</p>
-          <Link href={`/${author_id}`} className="author-link">
-            More from {author.name}
-          </Link>
-          <div className="article-image-container">
-            <Image
-              src={image_url}
-              alt="Article image"
-              width={500}
-              height={500}
-              layout="responsive"
-              className="article-image"
-            />
-          </div>
-        </>
-      )}
+      <ArticleHero title={title} subtitle={subtitle} />
+      <ArticleDetails
+        authorName={author.name}
+        likes={likes}
+        articleId={article_id}
+        content={content}
+      />
+      <p className="article-content">{content}</p>
+      <Link href={`/${author_id}`} className="author-link">
+        More from {author.name}
+      </Link>
+      <div className="article-image-container">
+        <Image
+          src={image_url}
+          alt="Article image"
+          width={500}
+          height={500}
+          layout="responsive"
+          className="article-image"
+        />
+      </div>
     </div>
   );
 };
