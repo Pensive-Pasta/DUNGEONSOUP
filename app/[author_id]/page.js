@@ -17,7 +17,9 @@ const Author = ({ params: { author_id } }) => {
       .then((response) => response.text())
       .then((data) => setAuthor(JSON.parse(data)))
       .catch((error) => console.error("Error fetching author data:", error));
-    fetch(`https://dungeonsoup-backend.onrender.com/articles/author/${author_id}`)
+    fetch(
+      `https://dungeonsoup-backend.onrender.com/articles/author/${author_id}`
+    )
       .then((response) => response.text())
       .then((data) => setArticles(JSON.parse(data)))
       .catch((error) => console.error("Error fetching articles data:", error));

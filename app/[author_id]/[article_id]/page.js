@@ -12,24 +12,30 @@ import Error from "@/app/components/error";
 const SingleArticle = ({ params: { article_id, author_id } }) => {
   const [article, setArticle] = useState(null);
   const [author, setAuthor] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [articleLoading, setArticleLoading] = useState(true);
+  const [authorLoading, setAuthorLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://dungeonsoup-backend.onrender.com/articles/${article_id}`)
       .then((response) => response.text())
-      .then((data) => setArticle(JSON.parse(data)[0]))
+      .then((data) => {
+        setArticleLoading(false);
+        setArticle(JSON.parse(data)[0]);
+      })
       .catch((error) => console.error("Error fetching article data:", error));
 
     fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
       .then((response) => response.text())
-      .then((data) => setAuthor(JSON.parse(data)))
+      .then((data) => {
+        setAuthorLoading(false);
+        setAuthor(JSON.parse(data));
+      })
       .catch((error) => console.error("Error fetching author data:", error));
-    setLoading(false);
   }, [article_id, author_id]);
 
-  if (loading) return <Loading />;
+  if (articleLoading || authorLoading) return <Loading />;
 
-  if (!article)
+  if (!article || !author)
     return <Error title="Oops!" subtitle="That article doesn't exist" />;
 
   const { title, subtitle, likes, content, image_url } = article;
