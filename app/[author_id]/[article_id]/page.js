@@ -15,12 +15,12 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/articles/${article_id}`)
+    fetch(`https://dungeonsoup-backend.onrender.com/articles/${article_id}`)
       .then((response) => response.text())
       .then((data) => setArticle(JSON.parse(data)[0]))
       .catch((error) => console.error("Error fetching article data:", error));
 
-    fetch(`http://localhost:3001/author/${author_id}`)
+    fetch(`https://dungeonsoup-backend.onrender.com//author/${author_id}`)
       .then((response) => response.text())
       .then((data) => setAuthor(JSON.parse(data)))
       .catch((error) => console.error("Error fetching author data:", error));

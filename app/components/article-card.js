@@ -30,7 +30,10 @@ const ArticleCard = (props) => {
             <p>|</p>
             <p>{calculateReadTime(content)} min read</p>
             <p>|</p>
-            <p>{likes}</p>
+            <div className="article-likes">
+              <Image src="/images/heart.svg" alt="likes" width={10} height={10} />
+              <p>{likes}</p>
+            </div>
           </div>
           <p className="truncate-span">{content}</p>
           <div className="button-container">

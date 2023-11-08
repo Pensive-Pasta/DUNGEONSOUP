@@ -14,7 +14,7 @@ const Navbar = () => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
     if (searchTerm.length > 2) {
-      fetch(`http://localhost:3001/articles/search/${searchTerm}`)
+      fetch(`https://dungeonsoup-backend.onrender.com/articles/search/${searchTerm}`)
         .then((response) => response.text())
         .then((data) => setSearchResults(JSON.parse(data)))
         .catch((error) => console.error("Error fetching author data:", error));

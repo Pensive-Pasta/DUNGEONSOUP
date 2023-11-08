@@ -127,6 +127,9 @@ footer span, footer a {
     overflow: hidden;
 }
 
+.article-content {
+    padding: 22px;
+}
 .article-card:hover {
     transform: scale(1.01);
     transition: transform 0.3s ease;
@@ -143,9 +146,6 @@ footer span, footer a {
     margin-top: 48px;
 }
 
-.article-content {
-    padding: 22px;
-}
 
 .article-details-container {
     border-bottom: 4px solid #C3CA47;
@@ -153,8 +153,20 @@ footer span, footer a {
     padding-top: 6px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     font-weight: 100;
+}
+
+.article-likes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25px;
+}
+
+.likeCount {
+    padding-right: 5px;
 }
 
 .truncate-span {
@@ -225,6 +237,7 @@ footer span, footer a {
     background-color: #C4CB48;
     margin-top: 100px;
     padding: 80px 16px;
+    line-height: 1.5;
 
     @media (max-width: 650px) {
        flex-direction: column;
@@ -261,7 +274,7 @@ footer span, footer a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 100px 0;
+    margin: 300px 0;
 }
 
 input {
@@ -299,8 +312,9 @@ input {
 
   .subscribe-container p {
       color: #05242E;
-      max-width: 600px;
+      max-width: 550px;
       font-weight:300;
+      margin: 50px 0;
     }
     
     h4 {

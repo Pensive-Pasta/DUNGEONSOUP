@@ -9,7 +9,7 @@ const LatestArticles = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/articles")
+    fetch("https://dungeonsoup-backend.onrender.com/articles")
       .then((response) => response.text())
       .then((data) => {
         setLoading(false);

@@ -13,11 +13,11 @@ const Author = ({ params: { author_id } }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/author/${author_id}`)
+    fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
       .then((response) => response.text())
       .then((data) => setAuthor(JSON.parse(data)))
       .catch((error) => console.error("Error fetching author data:", error));
-    fetch(`http://localhost:3001/articles/author/${author_id}`)
+    fetch(`https://dungeonsoup-backend.onrender.com/articles/author/${author_id}`)
       .then((response) => response.text())
       .then((data) => setArticles(JSON.parse(data)))
       .catch((error) => console.error("Error fetching articles data:", error));
@@ -32,7 +32,7 @@ const Author = ({ params: { author_id } }) => {
         <Error title="Oops!" subtitle="That author doesn't exist!" />
       ) : (
         <>
-          <AuthorHero img={author.banner_image} name={author.name} />
+          <AuthorHero name={author.name} />
           <div className="author-articles-container">
             {articles.map((article) => (
               <ArticleCard
@@ -42,11 +42,11 @@ const Author = ({ params: { author_id } }) => {
               />
             ))}
           </div>
-          {console.log(author)}
           <About
             description={author.about}
             imageUrl={author.profile_image_url}
             title={`ABOUT ${author.name.toUpperCase()}`}
+            alt="about image"
           />
         </>
       )}

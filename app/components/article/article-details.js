@@ -1,6 +1,7 @@
 "use client";
 import { calculateReadTime } from "@/app/utils/calculateReadTime";
 import { useState } from "react";
+import Image from "next/image";
 
 const ArticleDetails = ({ likes, authorName, content, articleId }) => {
   const [pageIsLiked, setPageIsLiked] = useState(false);
@@ -8,7 +9,7 @@ const ArticleDetails = ({ likes, authorName, content, articleId }) => {
 
   const handleLike = () => {
     fetch(
-      `http://localhost:3001/articles/${articleId}/${
+      `https://dungeonsoup-backend.onrender.com/articles/${articleId}/${
         pageIsLiked ? "dislike" : "like"
       }`,
       {
@@ -30,9 +31,8 @@ const ArticleDetails = ({ likes, authorName, content, articleId }) => {
     <div className="article-details">
       <p>
         Published by {authorName} | {calculateReadTime(content)} min read |{" "}
+        <Image className="likeCount" src="/images/heart.svg" alt="heart" width={10} height={10} />
         {likeCount}
-        {/* change heart fill based on liked/not liked status  */}
-        {/* <svg />  */}
       </p>
       <button onClick={handleLike}>{pageIsLiked ? "DISLIKE" : "LIKE"}</button>
     </div>
