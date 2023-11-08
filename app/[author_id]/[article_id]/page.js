@@ -49,7 +49,7 @@ const SingleArticle = ({ params: { article_id, author_id } }) => {
         articleId={article_id}
         content={content}
       />
-      <p className="article-content">{content}</p>
+      <p className="article-inner-content">{content}</p>
       <Link href={`/${author_id}`} className="author-link">
         More from {author.name}
       </Link>

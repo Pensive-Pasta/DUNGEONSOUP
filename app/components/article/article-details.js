@@ -30,11 +30,18 @@ const ArticleDetails = ({ likes, authorName, content, articleId }) => {
   return (
     <div className="article-details">
       <p>
-        Published by {authorName} | {calculateReadTime(content)} min read |{" "}
-        <Image className="likeCount" src="/images/heart.svg" alt="heart" width={10} height={10} />
-        {likeCount}
+        <button onClick={handleLike} className="like-button">
+          <Image
+            className="like-count"
+            src={pageIsLiked ? "/images/heart.svg" : "/images/empty_heart.svg"}
+            alt="heart"
+            width={15}
+            height={12}
+          />
+          {likeCount}
+        </button>
+        Published by {authorName} | {calculateReadTime(content)} min read
       </p>
-      <button onClick={handleLike}>{pageIsLiked ? "DISLIKE" : "LIKE"}</button>
     </div>
   );
 };
