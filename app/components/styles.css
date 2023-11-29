@@ -118,7 +118,8 @@ nav {
     flex-direction: column;
 
     @media (max-width: 750px) {
-        width: 200px;
+        width: 216px;
+        margin-left: 34px;
      }
 }
 

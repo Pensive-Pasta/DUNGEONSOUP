@@ -1,18 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { calculateReadTime } from "../utils/calculateReadTime";
+import { useEffect, useState } from "react";
 
-const ArticleCard = (props) => {
-  const {
-    title,
-    subtitle = "",
-    image_url,
-    article_id,
-    author_id,
-    content,
-    likes,
-    authorName,
-  } = props;
+const ArticleCard = ({
+  title,
+  subtitle = "",
+  image_url,
+  article_id,
+  author_id,
+  content,
+  likes,
+  authorName,
+}) => {
+  const [nameOfAuthor, setNameOfAuthor] = useState(authorName);
+
+  useEffect(() => {
+    fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
+      .then((response) => response.text())
+      .then((data) => setNameOfAuthor(JSON.parse(data)?.name))
+      .catch((error) => console.error("Error fetching author data:", error));
+  }, []);
+
   return (
     <div className="article-card">
       <Link className="article-link" href={`/${author_id}/${article_id}`}>
@@ -26,7 +35,7 @@ const ArticleCard = (props) => {
             {subtitle && `: ${subtitle}`}
           </h4>
           <div className="article-details-container">
-            <p>Published by {authorName}</p>
+            {nameOfAuthor && <p>Published by {nameOfAuthor}</p>}
             <p>|</p>
             <p>{calculateReadTime(content)} min read</p>
             <p>|</p>
