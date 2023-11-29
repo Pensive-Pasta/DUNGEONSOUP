@@ -139,6 +139,10 @@ footer span, footer a {
     object-fit: cover;
 }
 
+.article-image img {
+    width: 100%;
+}
+
 .articles-list {
     display: flex;
     justify-content: center;
