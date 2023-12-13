@@ -6,6 +6,7 @@ import ArticleCard from "../components/article-card";
 import AuthorHero from "../components/author/author-hero";
 import Loading from "../components/loading";
 import Error from "../components/error";
+import { fetchArticlesByAuthor, fetchAuthor } from "../api/article-api";
 
 const Author = ({ params: { author_id } }) => {
   const [author, setAuthor] = useState(null);
@@ -13,17 +14,23 @@ const Author = ({ params: { author_id } }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
-      .then((response) => response.text())
-      .then((data) => setAuthor(JSON.parse(data)))
-      .catch((error) => console.error("Error fetching author data:", error));
-    fetch(
-      `https://dungeonsoup-backend.onrender.com/articles/author/${author_id}`
-    )
-      .then((response) => response.text())
-      .then((data) => setArticles(JSON.parse(data)))
-      .catch((error) => console.error("Error fetching articles data:", error));
-    setLoading(false);
+    setLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const authorData = await fetchAuthor(author_id);
+        setAuthor(authorData);
+
+        const articlesData = await fetchArticlesByAuthor(author_id);
+        setArticles(articlesData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [author_id]);
 
   return (

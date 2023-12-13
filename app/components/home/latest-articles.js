@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../article-card";
 import Loading from "../loading";
+import { fetchLatestArticles } from "@/app/api/article-api";
 
 const LatestArticles = () => {
   const [loading, setLoading] = useState(true);
@@ -9,14 +10,18 @@ const LatestArticles = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch("https://dungeonsoup-backend.onrender.com/articles")
-      .then((response) => response.text())
-      .then((data) => {
+    const loadArticles = async () => {
+      try {
+        const fetchedArticles = await fetchLatestArticles();
+        setArticles(fetchedArticles);
+      } catch (error) {
+        console.error("Error in component while fetching articles:", error);
+      } finally {
         setLoading(false);
-        setArticles(JSON.parse(data));
-        return;
-      })
-      .catch((error) => console.error("Error fetching author data:", error));
+      }
+    };
+
+    loadArticles();
   }, []);
 
   return (

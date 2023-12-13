@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { calculateReadTime } from "../utils/calculateReadTime";
 import { useEffect, useState } from "react";
+import { fetchAuthor } from "../api/article-api";
 
 const ArticleCard = ({
   title,
@@ -16,11 +17,19 @@ const ArticleCard = ({
   const [nameOfAuthor, setNameOfAuthor] = useState(authorName);
 
   useEffect(() => {
-    fetch(`https://dungeonsoup-backend.onrender.com/author/${author_id}`)
-      .then((response) => response.text())
-      .then((data) => setNameOfAuthor(JSON.parse(data)?.name))
-      .catch((error) => console.error("Error fetching author data:", error));
-  }, []);
+    if (!authorName) {
+      const loadAuthorData = async () => {
+        try {
+          const authorData = await fetchAuthor(author_id);
+          setNameOfAuthor(authorData.name);
+        } catch (error) {
+          console.error("Error in component while fetching author data:", error);
+        }
+      };
+  
+      loadAuthorData();
+    }
+  }, [author_id, authorName]);
 
   return (
     <div className="article-card">
