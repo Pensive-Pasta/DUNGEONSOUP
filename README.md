@@ -26,7 +26,6 @@ DUNGEONSOUP is a full-stack fully responsive application dedicated to the intrep
 ## Quick Links
 
 - [Live Site](https://main.d1d2o9j0h46zlc.amplifyapp.com/)
-- [Figma Design](https://www.figma.com/file/Ae0TnDZ4WqDPg0E0IGK4x9/DUNGEONSOUP)
 - [Frontend Repository](https://github.com/Pensive-Pasta/DUNGEONSOUP)
 - [Backend Repository](https://github.com/Pensive-Pasta/DUNGEONSOUP_BACKEND)
 

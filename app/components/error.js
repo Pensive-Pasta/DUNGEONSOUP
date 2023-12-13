@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Error = ({
   title = "Uh oh...",
-  subtitle = "Somethign went wrong. Please try again in a bit.",
+  subtitle = "Something went wrong. Please try again in a bit.",
 }) => (
   <div className="error-container">
     <h1 className="error-title">{title}</h1>
