@@ -2,22 +2,41 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { React, useState } from "react";
+import { React, useState, useEffect, useRef } from "react";
+import { fetchSearchResults } from "../api/article-api";
 import "./styles.css";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const searchBarRef = useRef(null);
 
-  const handleSearch = (e) => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
-    if (searchTerm.length > 2) {
-      fetch(`https://dungeonsoup-backend.onrender.com/articles/search/${searchTerm}`)
-        .then((response) => response.text())
-        .then((data) => setSearchResults(JSON.parse(data)))
-        .catch((error) => console.error("Error fetching author data:", error));
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+        setShowSearch(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchBarRef]);
+
+  const handleSearch = async (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    if (term.length > 2) {
+      try {
+        const results = await fetchSearchResults(term);
+        setSearchResults(results);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    } else {
+      setSearchResults([]);
     }
   };
 
@@ -40,7 +59,7 @@ const Navbar = () => {
       </Link>
 
       <div className="outerSearchContainer">
-        <div className="searchContainer">
+        <div className="searchContainer" ref={searchBarRef}>
           <button
             onClick={() => setShowSearch(!showSearch)}
             className="searchButton"
